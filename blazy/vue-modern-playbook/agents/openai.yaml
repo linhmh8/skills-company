@@ -1,0 +1,3 @@
+display_name: Vue Modern Playbook
+short_description: Post-cutoff Vue coding and migration guidance
+default_prompt: Use this playbook when touching Vue code that may depend on post-2024-06 guidance. Check Vue 3.5 reactive props destructure, useTemplateRef, watcher cleanup, SSR hydration APIs, custom elements, and current migration-sensitive patterns before coding.

@@ -1,0 +1,3 @@
+display_name: Receiving Code Review
+short_description: Evaluate review feedback technically before acting
+default_prompt: Use this skill when review feedback arrives. Verify each claim against the code and proof surface, separate correct findings from weak ones, and only change code after the technical case is clear.

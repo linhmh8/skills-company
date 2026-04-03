@@ -1,0 +1,3 @@
+display_name: Writing Plans
+short_description: Write bounded implementation plans with clear proof ownership
+default_prompt: Use this skill when non-trivial work needs a real plan before coding or delegation. Write bounded tasks, explicit proof ownership, clear stop conditions, and reject the least-painful shortcut up front.

@@ -1,0 +1,3 @@
+display_name: Bevy Modern Playbook
+short_description: Post-cutoff Bevy coding and migration guidance
+default_prompt: Use this playbook when touching Bevy code that may depend on post-2024-06 guidance. Check required components, relationships, message versus observer event patterns, rendering and UI changes, and minor-line migration traps before coding.

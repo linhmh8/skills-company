@@ -1,0 +1,3 @@
+display_name: Finish Development Branch
+short_description: Close out completed work with the right integration path
+default_prompt: Use this skill when implementation is done and the next decision is how to integrate, merge, or clean up the branch. Choose the smallest sane closeout path and make the branch state explicit before final handoff.

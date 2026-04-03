@@ -1,0 +1,3 @@
+display_name: Requesting Code Review
+short_description: Ask for review when fresh eyes materially reduce risk
+default_prompt: Use this skill when a non-trivial or risky change needs an independent review. Frame the scope, risks, and proof gaps clearly so the reviewer can find real bugs or boundary drift instead of performing theater.

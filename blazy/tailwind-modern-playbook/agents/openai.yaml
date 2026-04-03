@@ -1,0 +1,3 @@
+display_name: Tailwind Modern Playbook
+short_description: Post-cutoff Tailwind CSS coding and migration guidance
+default_prompt: Use this playbook when touching Tailwind CSS that may depend on post-2024-06 guidance. Check v4 migration, CSS-first configuration, package splits, theme variables, directives, scanner behavior, and modern workflow changes before coding.

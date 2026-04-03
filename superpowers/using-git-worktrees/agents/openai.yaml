@@ -1,0 +1,3 @@
+display_name: Using Git Worktrees
+short_description: Choose worktree isolation only when it materially helps
+default_prompt: Use this skill when branch isolation would reduce risk or confusion. Create a worktree only when the task benefits from separation, and keep the reason for isolation explicit instead of following process by habit.

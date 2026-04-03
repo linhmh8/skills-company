@@ -1,0 +1,3 @@
+display_name: Writing Skills
+short_description: Create or revise skills that fit Codex cleanly
+default_prompt: Use this skill when creating, rewriting, or auditing a skill. Keep the trigger crisp, the workflow concise, the references intentional, and the final result aligned with Codex discovery and tool reality.

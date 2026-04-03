@@ -1,0 +1,3 @@
+display_name: Subagent-Driven Development
+short_description: Coordinator-led task decomposition with per-task subagents and final audit
+default_prompt: Use this skill only when the user explicitly asks for subagents, delegation, or parallel agent work and wants coordinator-managed execution. Lock the objective vocabulary and owner map first, spawn one specialized implementation subagent per execution task using gpt-5.4 with reasoning effort high, verify each task result individually against the objective, remove or debt-register temporary bridge code, then run a separate senior audit using gpt-5.4 with reasoning effort xhigh over the integrated whole.

@@ -1,0 +1,3 @@
+display_name: Update Knowledge
+short_description: Create or refresh a modern ecosystem playbook
+default_prompt: Use this skill to create or refresh a single-file ecosystem playbook from official post-cutoff sources. Keep the result dense, coding-oriented, task-ready, and focused on concrete implementation deltas rather than release chronology.

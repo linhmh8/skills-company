@@ -1,0 +1,3 @@
+display_name: Rust Modern Playbook
+short_description: Post-cutoff Rust coding and migration guidance
+default_prompt: Use this playbook when touching Rust code that may depend on post-2024-06 guidance. Check Rust 2024 changes, async closures, trait-object upcasting, newer std APIs, Cargo resolver and MSRV behavior, and target or toolchain shifts before coding.

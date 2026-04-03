@@ -1,0 +1,3 @@
+display_name: Test-Driven Development
+short_description: Lock owner contracts with the right pre-change evidence
+default_prompt: Use this skill when behavior or contracts are changing and pre-change evidence should lock the expected outcome. Prefer owner-boundary, fail-closed, protocol, and invariant proofs. Avoid implementation-shaped tests that lock container choices, scratch capacity, pointer identity, source text, wording, or duplicate adjacent boundary checks. Use validators or proof artifacts for performance claims.

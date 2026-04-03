@@ -1,0 +1,3 @@
+display_name: Using Superpowers
+short_description: Decide which skills materially improve the task
+default_prompt: Use this skill before substantial work to decide whether any skills should shape the task. Load the smallest set that changes the decision quality, and skip ceremony when the work is already obvious.

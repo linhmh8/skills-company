@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan Review"
+  short_description: "Hostile review of written plans before implementation"
+  default_prompt: "Use $plan-review in a separate session to attack a written plan before implementation. Focus on owner drift, missing invariants, proof gaps, hidden staging, and fake-pass shortcuts."

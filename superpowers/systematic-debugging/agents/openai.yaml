@@ -1,0 +1,3 @@
+display_name: Systematic Debugging
+short_description: Trace root cause before attempting fixes
+default_prompt: Use this skill when a bug, failing test, regression, or unexpected behavior needs investigation. Bound the failure, build a root-cause evidence chain, and do not patch symptoms before ownership is clear.

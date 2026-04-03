@@ -1,0 +1,3 @@
+display_name: Brainstorming
+short_description: Resolve open design decisions before coding
+default_prompt: Use this skill when product, UX, architecture, or seam decisions are still open. Keep the loop tight, ask only the questions that unblock real decisions, recommend one route, and avoid turning trivial work into ceremony.

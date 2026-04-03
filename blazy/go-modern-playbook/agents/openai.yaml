@@ -1,0 +1,3 @@
+display_name: Go Modern Playbook
+short_description: Post-cutoff Go coding and migration guidance
+default_prompt: Use this playbook when touching Go code that may depend on post-2024-06 guidance. Check iterators, generic aliases, new stdlib and runtime APIs, tool directives, benchmark and testing updates, WaitGroup.Go, and migration-sensitive changes before coding.

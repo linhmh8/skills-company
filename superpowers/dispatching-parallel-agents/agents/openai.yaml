@@ -1,0 +1,3 @@
+display_name: Dispatching Parallel Agents
+short_description: Split independent work across parallel agents
+default_prompt: Use this skill when multiple investigations or implementation slices can proceed independently. Split by problem domain or write scope, avoid overlap, and only parallelize work that will not block on the same decision.
