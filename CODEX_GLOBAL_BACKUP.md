@@ -4,14 +4,14 @@ This directory contains a git-managed mirror of the Codex global skill trees fro
 
 ## Sources
 
-- `C:\Users\Demonthorn\.codex\superpowers\skills` -> [skills/superpowers](/D:/Backend/nova/skills/superpowers)
-- `C:\Users\Demonthorn\.codex\skills` -> [skills/](/D:/Backend/nova/skills)
+- `${CODEX_HOME:-$HOME/.codex}/superpowers/skills` -> `superpowers/`
+- `${CODEX_HOME:-$HOME/.codex}/skills` -> repo root skill directories
 
 ## Mirror Policy
 
 - `skills/superpowers` is mirrored from the global `superpowers/skills` tree.
-- Each top-level directory under the global `skills` tree is mirrored into the matching top-level directory under [skills](/D:/Backend/nova/skills).
-- Repo-local directories that do not exist in the global source, such as [skills/blazy](/D:/Backend/nova/skills/blazy), are left intact.
+- Each top-level directory under the global `skills` tree is mirrored into the matching repo directory.
+- Repo-local directories that do not exist in the global source, such as `blazy/`, are left intact.
 
 ## Last Backup
 

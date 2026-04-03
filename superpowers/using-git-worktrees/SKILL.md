@@ -30,7 +30,7 @@ Choose in this order:
 1. existing project-local worktree directory such as `.worktrees/` or `worktrees/`
 2. documented repo preference from project instructions such as `AGENTS.md`
 3. user preference
-4. user-home default such as `~/.codex/worktrees/<project>/`
+4. Codex home default such as `${CODEX_HOME:-$HOME/.codex}/worktrees/<slot>/<project>/`
 
 If a project-local directory exists but is not ignored, do not auto-commit just to bootstrap a worktree.
 Either:
@@ -52,8 +52,10 @@ Either:
 ```bash
 project=$(basename "$(git rev-parse --show-toplevel)")
 
-# Example user-home location
-path="$HOME/.codex/worktrees/$project/$BRANCH_NAME"
+# Example Codex home location
+codex_home="${CODEX_HOME:-$HOME/.codex}"
+slot="${WORKTREE_SLOT:-$BRANCH_NAME}"
+path="$codex_home/worktrees/$slot/$project"
 
 git worktree add "$path" -b "$BRANCH_NAME"
 cd "$path"
