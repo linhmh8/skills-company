@@ -7,7 +7,7 @@ description: Use when implementing or changing behavior where pre-change evidenc
 
 ## Overview
 
-For Codex, TDD is one proof mode inside an evidence-first workflow, not a religion.
+For Codex, TDD is local evidence inside an evidence-first workflow, not architecture authority.
 Use it when a failing test is the sharpest way to lock a contract before implementation drift starts.
 When a repro, validator, benchmark, or boundary artifact is stronger, use that instead.
 
@@ -40,6 +40,18 @@ Before the first failing test, pin these four things:
 - what is intentionally out of scope for this cycle
 
 If you cannot name these quickly, you probably need `brainstorming` or `writing-plans` before you need TDD.
+
+## Applicability Gate
+
+Use `RED` -> `GREEN` only when all of these are true for the current slice:
+
+- the owner and claimed law are settled enough that the test will not invent architecture or a public API
+- the expected result has explicit authority from a spec, accepted decision, invariant, or external oracle
+- the failure is deterministic or controlled through a production-valid seam
+- `RED` and `GREEN` can land in the same owner-clean execution unit without a compatibility route, temporary owner, test-only state injector, or surrogate path
+
+If any condition is missing, stop TDD and return to design or proof-surface selection.
+A leaf test may prove a deterministic mechanism, but it cannot alone close an owner, lifecycle, or cutover claim.
 
 ## Use TDD Most Aggressively For
 
@@ -117,6 +129,8 @@ Use doubles only at true boundaries such as:
 
 Do not mock your own module graph just to make a test easier to write.
 If you feel forced to do that, the interface or owner boundary probably needs work.
+Production-valid control seams such as clocks, schedulers, randomness sources, and fault injectors are allowed.
+Do not add a public hook that exists only to bypass production ownership from tests.
 
 ## Pick The Right Evidence
 
@@ -140,6 +154,8 @@ Before writing or keeping a test, answer all of these:
 3. Is a stronger adjacent owner seam already proving this more directly?
 4. Does the test name claim more than the assertion actually proves?
 5. If this test disappeared, what real regression would escape?
+6. Would reintroducing the target defect or violating the claimed law make it fail?
+7. Would a different correct implementation still pass?
 
 If the answers point at helper names, scratch capacity, pointer identity, source text, wording, or duplicate seam coverage, choose a different proof surface.
 
@@ -174,6 +190,24 @@ Write direct tests for the bridge only if it independently performs:
 - fallback or compatibility policy
 - retry, caching, buffering, or ordering law
 - a contract expected to survive beyond the staged refactor
+
+## Architecture And Hard Replacements
+
+For owner, lifecycle, cancellation, synchronization, reconnect, teardown, or hard-cut work:
+
+1. lock the owner law, observable contract, and proof obligations
+2. create the real production owner boundary
+3. apply focused `RED` -> `GREEN` only to deterministic mechanisms inside that owner
+4. prove integrated lifecycle with production-path scenarios and controlled fault injection
+5. prove cutover with positive production-path behavior plus build-graph and deletion evidence
+
+Do not create a RED-only execution unit, speculative API suite, compatibility route, internal-owner mock, or test-only owner-state injector.
+
+## Compile-Time RED
+
+A compile failure proves a static contract only.
+Treat it as valid `RED` when the canonical contract is already decided, the missing capability is narrow, and `GREEN` lands in the same execution unit.
+Do not use compile-only `RED` to complete a runtime behavior, lifecycle, owner-boundary, or cutover checkpoint.
 
 ## Forbidden Proof Shortcuts
 
@@ -233,10 +267,13 @@ Stop and rethink if you are:
 - pinning exact scratch or container shape when the real risk is alloc/copy/boundedness and a better artifact or invariant exists
 - writing more test code than product code for a tiny wrapper or temporary compile-keeping bridge
 - adding a unit test to compensate for not understanding the owner boundary
+- relying on scheduling hope instead of a deterministic barrier, scheduler, or controlled fault
+- adding a constructor, counter, helper, sidecar, or `*_for_test` path only to make `RED` possible
+- using a self-reported counter as proof of allocation, copying, joining, fairness, or progress
 
 ## Bottom Line
 
 Use failing tests by default when tests are the sharpest proof.
 Use a different proof surface when it is clearly stronger.
-The goal is not "test first" as ritual.
+The goal is not "test first" as a sequencing ritual.
 The goal is "evidence first" so implementation stays honest and future refactors stay owner-clean.

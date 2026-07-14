@@ -51,6 +51,11 @@ If any of these are missing, say so before approval and treat that as a review l
 - hidden coupling to code or docs outside the stated slice
 - omitted failure modes: error paths, rollback, partial update, stale state, ordering, concurrency, idempotency
 - proof gaps: tests or checks that only prove the happy path or the chosen implementation
+- test expectations without authority from a spec, accepted decision, invariant, or external oracle
+- tests that silently select an unresolved owner, public API, or architecture
+- RED-only units, horizontal test phases, or compile-only RED presented as behavioral proof
+- leaf tests presented as complete owner, lifecycle, concurrency, or cutover proof
+- internal-owner mocks, test-only state injectors, or public constructors added only to make tests possible
 - fake-safe staging, shims, bridges, dual paths, or compile-only scaffolding
 - hot-path traps: extra allocs, rescans, cross-products, or perf regressions disguised as architecture
 - missing stop conditions or acceptance bars that let the executor improvise contracts mid-flight
@@ -63,6 +68,7 @@ Before accepting the plan, ask:
 - what would an executor implement if they optimized for speed instead of architecture
 - what proof could go green while the owner boundary is still wrong
 - what staging path would leave bridge code or compatibility debt behind
+- what test could force a speculative API or mechanism while claiming to prove only behavior
 
 If the plan does not block these routes explicitly, it is not review-ready.
 
@@ -86,6 +92,9 @@ If you only have partial context, review aggressively within that limit and say 
 
 - expect `writing-plans` output to name `Primary Contract`, `First Proof`, and `First Slice`; flag their absence directly
 - reject plans that imply horizontal "all tests first, all implementation later" workflow when tests are the proof surface
+- reject plans that split `RED` and `GREEN` across execution units
+- require compile-fail proof to stay scoped to a decided static contract
+- require lifecycle and hard-cut claims to include integrated production-path scenarios, controlled faults, positive cutover, and deletion evidence
 - reject plans whose claimed proof does not match the final claim they intend to make
 - when a plan claims one-shot execution, verify that the acceptance bar really describes a one-shot end state
 

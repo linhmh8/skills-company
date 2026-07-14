@@ -62,12 +62,17 @@ If you cannot state these cleanly, the completion claim is not ready.
 ## Claim-Matching Guidance
 
 - `behavior claim`: verify with the original failing test, repro, or boundary artifact
+- `static contract claim`: a focused compile-fail proof is sufficient only for the decided static rule it exercises
 - `contract claim`: verify at the owner boundary or public interface, not through internal helpers
+- `owner, lifecycle, or concurrency claim`: require integrated production-path scenarios and controlled fault evidence; leaf tests are supporting proof only
+- `hard replacement or cutover claim`: require positive production-path behavior plus build-graph and deletion evidence
 - `refactor claim`: verify preserved behavior or invariant, not merely compilation
 - `performance claim`: verify with benchmark or repo proof artifact, not intuition
 - `completion claim`: verify both the proof surface and the absence of residual transition scaffolding
 
 If the best proof you have only shows a smaller truth than the sentence you want to say, change the sentence.
+A compile failure does not prove runtime behavior.
+Removing one implementation mechanism is not the test: reintroducing the defect or violating the law must fail, while another correct implementation may pass.
 
 ## Codex Guidance
 

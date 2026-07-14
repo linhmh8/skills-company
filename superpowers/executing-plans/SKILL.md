@@ -29,14 +29,21 @@ Read them critically, keep the intent locked, and choose the right proof surface
 ## Proof Discipline
 
 Every task needs evidence, but not every task needs a new failing unit test.
+TDD is local evidence, not the default implementation order.
+Use `RED` -> `GREEN` only after the owner, claimed law, expected-result authority, and controllable failure signal are settled; keep both in the same owner-clean execution unit.
 
 Use:
 
 - RED tests or repros for behavior changes
 - characterization or invariant proof for refactors
 - boundary proof for owner cuts
+- production-path scenarios and controlled fault injection for lifecycle or concurrency claims
+- positive production-path behavior plus build-graph and deletion evidence for hard replacements
 - benchmark or validator artifacts for performance claims
 - targeted validation for docs or mechanical changes
+
+A leaf test may prove a mechanism but cannot alone close an owner, lifecycle, or cutover claim.
+A compile failure proves a decided static contract only, not runtime behavior.
 
 ## Stop Conditions
 
@@ -46,6 +53,7 @@ Stop and escalate when:
 - the only way forward is to weaken architect-owned proof
 - verification keeps failing at the same seam
 - the implementation is drifting toward the least-painful patch
+- TDD would require inventing an API, compatibility path, temporary owner, internal-owner mock, or test-only production hook
 
 ## Closeout
 

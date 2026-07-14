@@ -32,11 +32,12 @@ Do not force a full design ritual onto trivial, local, or mechanical work.
 2. Identify the real unknowns and risks.
 3. Lock a tentative owner boundary or public interface before discussing solutions in detail.
 4. Lock the proof focus: what artifact would fail if the choice is wrong, and what behavior matters first.
-5. Ask only the questions that unblock decisions.
-6. Present 2-3 approaches only when there is a real choice.
-7. Recommend one route and say why.
-8. Compare the least-painful patch against the long-lived route.
-9. Write a design doc or gate only when the slice is non-trivial, user-facing, or repo policy requires it.
+5. Name the authority for the expected result: spec, accepted decision, invariant, or external oracle.
+6. Ask only the questions that unblock decisions.
+7. Present 2-3 approaches only when there is a real choice.
+8. Recommend one route and say why.
+9. Compare the least-painful patch against the long-lived route.
+10. Write a design doc or gate only when the slice is non-trivial, user-facing, or repo policy requires it.
 
 ## Lock Before Leaving Brainstorming
 
@@ -45,6 +46,7 @@ Before moving from brainstorming into coding or formal planning, pin:
 - the chosen owner boundary or public interface
 - the success condition in observable terms
 - the first contract or invariant to prove
+- the authority for the expected result
 - the strongest proof surface for that first contract
 - what is intentionally out of scope for the first slice
 
@@ -67,6 +69,7 @@ If these are still fuzzy, you are not done brainstorming.
 - do not block obvious execution behind a mandatory approval dance
 - when the decision is material, give your recommendation and a brief reason
 - if tests will be the proof surface, identify the first behavior to prove instead of sketching a full speculative test suite
+- let tests express a decided law; do not let them silently decide an unresolved owner, public API, or architecture
 
 ## Bottom Line
 

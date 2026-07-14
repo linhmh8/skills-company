@@ -30,6 +30,7 @@ Skip a formal plan for tiny local changes that a strong executor can complete sa
 - Do not manufacture "prep", "wire-up", "follow-up cleanup", "shim now remove later", or "make it compile first" tasks unless they have durable standalone value.
 - Temporary bridges, shims, compatibility facades, dual-path staging, and compile-only scaffolding are forbidden by default.
 - If a bridge is truly unavoidable, the plan must treat it as debt with an explicit kill point, proof burden, and acceptance gate that removes it or records the drift.
+- Treat TDD as one selectable evidence surface, not the default sequencing law.
 
 ## Lock Contract And Proof Before Coding
 
@@ -37,6 +38,7 @@ Before a plan is approved, pin these explicitly:
 
 - the owner boundary or public interface that the executor must preserve or change
 - the first observable contract or invariant the work must prove
+- the authority for the expected result: spec, accepted decision, invariant, or external oracle
 - the strongest first proof artifact for that contract
 - what will intentionally remain unproven or deferred in the first slice
 - any open question that could invert the architecture if answered differently
@@ -123,6 +125,7 @@ If the slice is architecturally coherent, prefer one strong executor over a ladd
 
 If tests are the chosen proof surface, describe the first one to three vertical proof slices.
 Do not describe a horizontal "write all tests, then all implementation" phase.
+Never split `RED` from `GREEN` into separate execution units.
 
 If a unit cannot be described without referencing temporary compatibility scaffolding, the unit is shaped incorrectly.
 
@@ -133,10 +136,14 @@ Plans should tell the executor which evidence fits the slice:
 - `behavior bug or new behavior`: failing repro or boundary-facing test first when it sharpens the contract
 - `refactor`: invariant proof, characterization coverage, or existing strong coverage
 - `owner cut or seam change`: boundary inspection plus targeted proof
+- `lifecycle or concurrency`: production-path scenario with deterministic control seams and controlled fault injection
+- `hard replacement`: owner law and production boundary first, focused local `RED` -> `GREEN`, integrated lifecycle proof, then positive production-path cutover plus build-graph and deletion evidence
 - `hot path or perf`: benchmark, repo proof artifact, or perf scenario tied to the final shape
 - `docs or mechanical`: targeted validation only
 
 Proof should validate the final architecture.
+Choose `RED` -> `GREEN` only after the owner and claimed law are decided, the expected result has explicit authority, the failure is controllable, and the cycle fits one owner-clean execution unit.
+A compile failure may prove a decided static contract; it cannot complete a runtime behavior checkpoint.
 Do not ask for tests that merely pin a temporary shim or bridge in place.
 If a bridge is reluctantly allowed, the proof plan must emphasize bridge removal or explicitly record the surviving debt.
 
@@ -161,6 +168,8 @@ Before approving the plan, run this hostile check:
 - Does any unit exist only to preserve temporary compatibility or compilation?
 - Would the final review still find a bridge, shim, adapter, or dual path that survives only because the plan permitted it?
 - Can the executor complete the slice without inventing missing contracts?
+- Does any proposed test invent an API, public constructor, owner state, or test-only production hook?
+- Does any leaf or compile-only proof claim to complete an owner, lifecycle, behavior, or cutover checkpoint?
 
 If the answer exposes transitional architecture, rewrite the plan before execution starts.
 
